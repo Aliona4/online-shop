@@ -38,7 +38,7 @@ export class HeadControlsView {
       "button"
     );
 
-    filterButton.innerText = "Фильтры";
+    filterButton.innerText = "Filteri";
 
     root.append(filterButton);
     this.addFilterHandler(filterButton);

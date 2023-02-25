@@ -44,24 +44,24 @@ export class FilterView {
       </div>
       <div class="filter__price price-filter ">
         <div class="price-filter__wrapper">
-            <h3 class="price-filter__title title">Цена</h3>
+            <h3 class="price-filter__title title">Hinta</h3>
         </div>
       </div>
 
       <div class="filter__stock stock-filter">
         <div class="stock-filter__wrapper">
-            <h3 class="stock-filter__title title">В наличии</h3>
+            <h3 class="stock-filter__title title">Myymäläsaatavilla</h3>
         </div>
       </div>
 
       <div class="filter__total-products total-products">
-        <span class="total-products__text">Найдено товаров:</span>
+        <span class="total-products__text">Tuotteita löytyi:</span>
         <span class="total-products__value" id="total-products">${this.model.amount.total}</span>
       </div>
       
       <div class="filter__buttons">
-        <button class="button button--rounded button--bordered" id="button-reset">Очистить</button>
-        <button class="button button--rounded button--bordered" id="button-copy">Скопировать</button>
+        <button class="button button--rounded button--bordered" id="button-reset">Poistaa</button>
+        <button class="button button--rounded button--bordered" id="button-copy">Kopio</button>
       </div>
     `;
   }
@@ -69,7 +69,7 @@ export class FilterView {
   private addCategories() {
     let template = `
       <div class="filter__categories categories-filter">
-        <h3 class="categories-filter__title title">Категории</h3>
+        <h3 class="categories-filter__title title">Luokka</h3>
         <ul class="categories-filter__list filter-list">
     `;
 
@@ -103,7 +103,7 @@ export class FilterView {
   private addBrands() {
     let template = `
       <div class="filter__brands brands-filter">
-        <h3 class="brands-filter__title title">Бренды</h3>
+        <h3 class="brands-filter__title title">Brändi</h3>
         <ul class="brands-filter__list filter-list">
     `;
 
@@ -136,7 +136,7 @@ export class FilterView {
 
   insertSliders() {
     const priceRange = Utils.id(".price-filter__wrapper") as ExtendedElement;
-    priceRange.html('<h3 class="price-filter__title title">Цена</h3>');
+    priceRange.html('<h3 class="price-filter__title title">Hinta</h3>');
     const priceRangeSlider = new RangeSlider(
       this.model,
       this.controller,
@@ -145,7 +145,7 @@ export class FilterView {
     priceRange.append(priceRangeSlider.buildRangeSlider());
 
     const stockRange = Utils.id(".stock-filter__wrapper") as ExtendedElement;
-    stockRange.html('<h3 class="price-filter__title title">В наличии</h3>');
+    stockRange.html('<h3 class="price-filter__title title">Myymäläsaatavuus</h3>');
     const stockRangeSlider = new RangeSlider(
       this.model,
       this.controller,
@@ -183,7 +183,7 @@ export class FilterView {
       const target = e.target as HTMLElement;
       target.classList.add("button--copy-clicked");
       const targetText = target.innerText;
-      target.innerText = "Ссылка скопирована!";
+      target.innerText = "Linkki kopioitu!";
 
       target.addEventListener("transitionend", function () {
         this.innerText = targetText;

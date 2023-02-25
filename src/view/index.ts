@@ -118,8 +118,8 @@ export class View {
 
     const total =
       sum === discounted
-        ? `<b>${sum.toString()}₽</b>`
-        : `<span>${sum.toString()}₽</span><b>${discounted.toString()}₽</b>`;
+        ? `<b>${sum.toString()}€</b>`
+        : `<span>${sum.toString()}€</span><b>${discounted.toString()}€</b>`;
 
     price.html(sum ? total : "");
   }
@@ -133,14 +133,14 @@ export class View {
                             
                 <nav class="header__nav nav">
                     <ul class="nav__list">
-                        <li class="nav__item main-link"><a href="/" class="nav__link">Главная</a></li>
+                        <li class="nav__item main-link"><a href="/" class="nav__link">Pääsivu</a></li>
                         <li class="nav__item cart">
                             <a href="/cart" class="nav__link cart__link">
                                 <div class="cart__total-price"></div>
                                 <div class="cart__wrapper">
                                     <div class="cart__content">
                                         <span class="icon icon--cart"></span>
-                                        <p class="cart__text">Корзина</p>
+                                        <p class="cart__text">Ostoskori</p>
                                         <div class="cart__total">
                                             <div class="icon-circle icon-circle--sec-color">
                                                 <span class="cart__total-value"></span>
@@ -182,15 +182,15 @@ export class View {
             <footer class="footer">
             <div class="footer__wrapper wrapper">
                 <div class="footer__gh gh">
-                    <a class="gh__link" href="https://github.com/Elijah-I"><span class="icon icon--gh-face"></a>
-                    <a class="gh__link" href="https://github.com/fogarea"><span class="icon icon--gh"></a>
+                    <a class="gh__link" href="https://github.com/Aliona4"><span class="icon icon--gh-face"></a>
+                    <a class="gh__link" href="https://github.com/Aliona4"><span class="icon icon--gh"></a>
                 </div>
                 <div class="footer__text">
-                  <span>fogarea / elijah</span>
+                  <span>Aliona Anisimava / Business College Helsinki</span>
                   <span>2022</span>
                 </div>
                 <div class="footer__rss rss">
-                    <a class="rss__link" href="https://rs.school/js/"><span class="icon icon--rss"></a>
+                    <a class="rss__link" href=""><span class="icon icon--rss"></a>
                 </div>
             </div>
         </footer>

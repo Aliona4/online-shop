@@ -28,7 +28,7 @@ export class CartListView {
 
   addTitle() {
     const title = Utils.create<HTMLElement>("shopping__title title", "h2");
-    title.innerText = "Моя корзина";
+    title.innerText = "Ostoskori";
 
     return title;
   }
@@ -56,14 +56,14 @@ export class CartListView {
     return `<thead class="shopping-table__head">
                                     <tr class="shopping-table__head-row">
                                         <th>№</th>
-                                        <th>Фото</th>
-                                        <th>Название</th>
-                                        <th>Категория</th>
-                                        <th>Бренд</th>
-                                        <th>Цена</th>
-                                        <th>Наличие</th>
-                                        <th>Количество</th>
-                                        <th>Сумма</th>
+                                        <th>Kuva</th>
+                                        <th>Nimi</th>
+                                        <th>Luokka </th>
+                                        <th>Brändi</th>
+                                        <th>Hinta</th>
+                                        <th>Myymäläsaatavuus</th>
+                                        <th>Lukumäärä</th>
+                                        <th>Summa</th>
                                     </tr>
                                 </thead>`;
   }
@@ -104,7 +104,7 @@ export class CartListView {
           <td class="table-item__price-td">
               <span class="table-item__price table-item__price--default">${
                 product.price
-              } ₽</span>
+              } €</span>
           </td>
           <td>
               <span class="table-item__stock">${
@@ -128,7 +128,7 @@ export class CartListView {
           <td class="table-item__amount-td">
               <span class="table-item__amount" id="amount">${
                 product.price * product.stockUsed
-              } ₽</span>
+              } €</span>
           </td>
       </tr>`;
       serialNumber++;
@@ -147,7 +147,7 @@ export class CartListView {
           <tr class="shopping-table__footer-row">
               <td colspan="4">
                   <div class="table-item__items-on-page items-on-page">
-                      <label class="items-on-page__label" for="items-on-page">Товаров на странице</label>
+                      <label class="items-on-page__label" for="items-on-page">Tavarat sivulla</label>
                       <input class="items-on-page__input" type="number" min=1 value="${perPage}" maxlength="4" id="items-on-page">
                   </div>
               </td>
@@ -165,7 +165,7 @@ export class CartListView {
               <td colspan="2"></td>
               <td colspan="2" align="right">
                   <div class="table-item__button-reset">
-                      <button class="button button--cart-reset" id="cart-reset">Очистить корзину</button>
+                      <button class="button button--cart-reset" id="cart-reset">Poista ostoskori</button>
                   </div>
               </td>
           </tr>

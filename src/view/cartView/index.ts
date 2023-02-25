@@ -92,7 +92,7 @@ export class CartView {
   fillNoProducts() {
     const noProducts = Utils.create("cart-section", "div");
     noProducts.innerText =
-      "В корзине нет товаров, перейдите на главную страницу, чтобы добавить их";
+      " Ostoskorissa ei ole tuotteita, siirry pääsivulle lisätäksesi ne";
     noProducts.style.justifyContent = "center";
     this.root.append(noProducts);
   }
@@ -100,8 +100,8 @@ export class CartView {
   fillBreadcrumbsNav() {
     this.breadcrumbsNav.innerHTML = `
       <ul class="breadcrumbs-nav__list">
-        <li class="breadcrumbs-nav__item"><a class="bread__link" href="/">Главная</a></li>
-        <li class="breadcrumbs-nav__item"><a href="#" onClick="return(false);">Моя корзина</a></li>
+        <li class="breadcrumbs-nav__item"><a class="bread__link" href="/">Pääsivu</a></li>
+        <li class="breadcrumbs-nav__item"><a href="#" onClick="return(false);">Ostoskori</a></li>
       </ul>`;
   }
 

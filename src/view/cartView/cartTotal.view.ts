@@ -35,7 +35,7 @@ export class CartTotalView {
   }
 
   addTitle() {
-    return `<h4 class="cart-total__title title">Детали заказа</h4>`;
+    return `<h4 class="cart-total__title title">Tilauksen tiedot</h4>`;
   }
 
   addCartTotalContent() {
@@ -53,7 +53,7 @@ export class CartTotalView {
 
   addCartStockTotal() {
     return `<div class="cart-total__line">
-                <span class="cart-total__line-text">Количество</span>
+                <span class="cart-total__line-text">Määrä</span>
                 <span class="cart-total__line-dashes"></span>
                 <span class="cart-total__line-value">${this.model.cartStockTotal}шт.</span>
             </div>`;
@@ -77,15 +77,15 @@ export class CartTotalView {
     return `
       <div class="cart-total__promo-code promo-code">
           <div class="cart-total__line">
-              <span class="cart-total__line-text">Промокоды</span>
+              <span class="cart-total__line-text">Promokoodi</span>
               <span class="cart-total__line-dashes"></span>
               <span class="cart-total__line-value">RSS, HOBBIE</span>
           </div>
 
 
           <div class="promo-code__input">
-              <input class="promo-code__text" type="text" id="promo-input" placeholder="Введите промокод">
-              <input class="promo-code__button promo-code__button-disabled" type="submit" value="Применить">
+              <input class="promo-code__text" type="text" id="promo-input" placeholder="Lisää promokoodi">
+              <input class="promo-code__button promo-code__button-disabled" type="submit" value="Soveltaa">
           </div>
 
           <div class="promo-code__applied">${applied.join("")}</div>
@@ -109,19 +109,19 @@ export class CartTotalView {
 
     return (
       `<div class="cart-total__line cart-total__default-sum">
-                <span class="cart-total__line-text cart-total__default-sum-text">Итого</span>
+                <span class="cart-total__line-text cart-total__default-sum-text">Yhdessa</span>
                 <span class="cart-total__line-dashes"></span>
                 <span class="cart-total__line-value cart-total__default-sum-value${
                   !withPromo && !withDiscount
                     ? " cart-total__default-sum-alone"
                     : ""
-                }">${this.model.totalPrice}₽</span>
+                }">${this.model.totalPrice}€</span>
             </div>` +
       (withPromo || withDiscount
         ? `<div class="cart-total__line cart-total__discount-sum">
-                <span class="cart-total__line-text cart-total__discount-sum-text">Со скидкой</span>
+                <span class="cart-total__line-text cart-total__discount-sum-text">Alennuksella </span>
                 <span class="cart-total__line-dashes"></span>
-                <span class="cart-total__line-value cart-total__discount-sum-value">${discountedPrice}₽</span>
+                <span class="cart-total__line-value cart-total__discount-sum-value">${discountedPrice}€</span>
             </div>`
         : "")
     );
@@ -129,7 +129,7 @@ export class CartTotalView {
 
   addCartOrderButton() {
     return `<div class="cart-total__button">
-                <button class="button button--colored" id="order">Оформить заказ</button>
+                <button class="button button--colored" id="order">Ostaa</button>
             </div>`;
   }
 

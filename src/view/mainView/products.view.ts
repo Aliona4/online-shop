@@ -37,7 +37,7 @@ export class ProductsView {
         const classNM = `products__item product-item${
           cart ? " product-item--carted" : ""
         }`;
-        const buttonText = cart ? "Удалить из корзины" : "Добавить в корзину";
+        const buttonText = cart ? " Poista ostoskorista" : "Lisää ostoskoriin";
 
         if (show) {
           const priceOnly = !discountPercentage;
@@ -56,10 +56,10 @@ export class ProductsView {
                             ${category.name}
                         </span>
                         <span class="product-item__brand">
-                            Бренд: ${brand.name}
+                            Brändi: ${brand.name}
                         </span>
                         <span class="product-item__stock">
-                            В наличии: <span class="info-list__value">${
+                            Saatavilla: <span class="info-list__value">${
                               stock - stockUsed
                             }</span>
                         </span>
@@ -67,13 +67,13 @@ export class ProductsView {
                     <div class="product-item__price">
                         <span class="product-item__price-default${
                           priceOnly ? " product-item__price-only" : ""
-                        }">${price}₽</span>
+                        }">${price}€</span>
                         <span class="product-item__price-discount${
                           priceOnly ? " product-item__price-only" : ""
                         }">${(
             price -
             (price / 100) * discountPercentage
-          ).toFixed(2)}₽</span>
+          ).toFixed(2)}€</span>
                     </div>
                 </div>
                 <div class="product-item__rating-buy">
@@ -104,7 +104,7 @@ export class ProductsView {
     );
 
     if (found === 0) {
-      productsWrapper.innerHTML = `<div class="products__empty">Товары по вашему запросу не найдены. Пожалуйста, попробуйте еще раз</div>`;
+      productsWrapper.innerHTML = `<div class="products__empty"> Pyyntöäsi vastaavia tuotteita ei löytynyt. Yritä uudelleen</div>`;
     }
 
     root.append(productsWrapper);
@@ -122,7 +122,7 @@ export class ProductsView {
           Utils.id(
             `#product-${product.dataset!.id} .button__add`
           ) as ExtendedElement
-        ).html("Добавить в корзину");
+        ).html("Lisää ostoskoriin");
 
         (
           Utils.id(
@@ -138,7 +138,7 @@ export class ProductsView {
         (product as ExtendedElement).class("product-item--carted");
 
         (Utils.id(`#product-${cartId} .button__add`) as ExtendedElement).html(
-          "Удалить из корзины"
+          "Poista korista"
         );
       }
     }

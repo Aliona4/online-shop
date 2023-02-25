@@ -54,7 +54,7 @@ export class ProductView {
   fillBreadcrumbsNav({ category, title }: Product) {
     this.breadcrumbsNav.innerHTML = `
       <ul class="breadcrumbs-nav__list">
-        <li class="breadcrumbs-nav__item"><a class="bread__link" href="/">Главная</a></li>
+        <li class="breadcrumbs-nav__item"><a class="bread__link" href="/">Pää </a></li>
         <li class="breadcrumbs-nav__item"><a class="bread__link" href="/?${SearchParams.CATEGORY}=${category.id}">${category.name}</a></li>
         <li class="breadcrumbs-nav__item"><a href="#" onClick="return(false);">${title}</a></li>
       </ul>`;
@@ -111,7 +111,7 @@ export class ProductView {
 
     const inCart = this.model.inCart(product.id);
 
-    const buttonText = inCart ? "Удалить из корзины" : "Добавить в корзину";
+    const buttonText = inCart ? "Poista ostoskorista" : "Lisää ostoskoriin";
     const buttonClass = `button button--rounded button--bordered button__add-product${
       inCart ? " button--carted" : ""
     }`;
@@ -122,25 +122,25 @@ export class ProductView {
       <div class="product__content">
         <h2 class="product__title title">${product.title}</h2>
         <div class="product__desc">
-            <h4 class="product__desc-title title">Описание товара</h4>
+            <h4 class="product__desc-title title">Tuotteen kuvaus</h4>
             <span class="product__desc-content">${product.description}</span>                  
         </div>
 
         <div class="product__info">
-            <h4 class="product__info-title title">Характеристики</h4>
+            <h4 class="product__info-title title">Ominaisuudet</h4>
             <ul class="product__info-list info-list">
                 <li class="info-list__item">
-                    <span class="info-list__name">Категория</span>
+                    <span class="info-list__name">Luokka</span>
                     <span class="info-list__value">${
                       product.category.name
                     }</span>
                 </li>
                 <li class="info-list__item">
-                    <span class="info-list__name">Бренд</span>
+                    <span class="info-list__name">Brändi</span>
                     <span class="info-list__value">${product.brand.name}</span>
                 </li>
                 <li class="info-list__item">
-                    <span class="info-list__name">В наличии</span>
+                    <span class="info-list__name">Saatavilla</span>
                     <span class="info-list__value" id="info-list-product-value">${
                       product.stock - product.stockUsed
                     }</span>
@@ -151,13 +151,13 @@ export class ProductView {
         <div class="product__price">
             <span class="product__price-default${
               priceOnly ? " product__price-only" : ""
-              }">${product.price}₽</span>
+              }">${product.price}€</span>
             <span class="product__price-discount${
               priceOnly ? " product__price-only" : ""
               }">${(
               product.price -
               (product.price / 100) * product.discountPercentage
-            ).toFixed(2)}₽</span>
+            ).toFixed(2)}€</span>
         </div>
 
         <div class="product__rating">
@@ -172,7 +172,7 @@ export class ProductView {
     }">${buttonText}</button>
             <a href="/cart" class="button button--rounded button--bordered button__buy-product" data-id="${
               product.id
-            }">Быстрая покупка</a>
+            }"> Nopea ostos</a>
         </div>
       </div>`;
   }
@@ -251,7 +251,7 @@ export class ProductView {
     if (buttonAdd !== null)
       (buttonAdd as ExtendedElement)
         .class("button--carted", !added)
-        .html(added ? "Удалить из корзины" : "Добавить в корзину");
+        .html(added ? "Poista ostoskorista" : "Lisää ostoskoriin");
 
     if (listValue !== null)
       (listValue as ExtendedElement).html(
@@ -273,7 +273,7 @@ export class ProductView {
     modalZoomImg.style.backgroundRepeat = "no-repeat";
 
     const modalTitle = Utils.create("modal__img-text", "p");
-    modalTitle.innerText = "Для того, чтобы приблизить изображение, наведите на него"
+    modalTitle.innerText = " Voit lähentää kuvaa viemällä hiiren sen päälle."
 
     modalImgWrapper.append(modalTitle, modalImg, modalZoomImg);
     this.modal.buildModal(modalImgWrapper);
