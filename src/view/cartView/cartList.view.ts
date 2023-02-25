@@ -109,7 +109,7 @@ export class CartListView {
           <td>
               <span class="table-item__stock">${
                 product.stock - product.stockUsed
-              } шт.</span>
+              } kpl.</span>
           </td>
           <td>
               <div class="table-item__quantity">
