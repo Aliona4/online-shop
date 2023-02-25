@@ -28,7 +28,7 @@ export class OrderModalView{
   }
 
   addTitle() {
-    return `<h3 class="order__title title">Данные для доставки</h3>`;
+    return `<h3 class="order__title title"> Toimitustiedot</h3>`;
   }
 
   addOrderForm() {
@@ -36,20 +36,20 @@ export class OrderModalView{
                        <div class="order-form__row">
                                <label for="full-name" class="order-form__label">
                                    <span class="order-form__text">
-                                       Имя и фамилия
+                                      Etunimi ja sukunimi
                                        <span class="order-form__required">*</span>
                                    </span>
-                                   <input type='text' id="full-name" class='order-form__input' placeholder="Иван Иванов" required>
+                                   <input type='text' id="full-name" class='order-form__input' placeholder="Mihail Lehti" required>
                                </label>
                        </div>
                        <div class="order-form__column">
                            <div class="order-form__row">
                                <label for="phone-number" class="order-form__label">
                                    <span class="order-form__text">
-                                       Телефон
+                                       Puhelin
                                        <span class="order-form__required">*</span>
                                    </span>
-                                   <input type='text' id="phone-number" class='order-form__input' placeholder="(123) 456-78-90" required>
+                                   <input type='text' id="phone-number" class='order-form__input' placeholder="(046) 456-78-90" required>
                                </label>
                            </div>
                            <div class="order-form__row">
@@ -65,17 +65,17 @@ export class OrderModalView{
                        <div class="order-form__row">
                            <label for="address" class="order-form__label">
                                <span class="order-form__text">
-                                   Адрес доставки
+                                  Toimitusosoite
                                    <span class="order-form__required">*</span>
                                </span>
-                               <input type='text' id="address" class='order-form__input' placeholder="г. Санкт-Петербург" required>
+                               <input type='text' id="address" class='order-form__input' placeholder="Helsinki" required>
                            </label>
                        </div>
                        <div class="order-form__row card">
                            <div class="card__content">
                                <div class="card__row">
                                    <label for="card-number" class="card__label">
-                                       <span class="card__text">Номер карты</span>
+                                       <span class="card__text">Kortin numero</span>
                                        <input type='tel' id="card-number" class='card__input' placeholder='1234 5678 9123 4567' maxlength="19" required>
                                    </label>
 
@@ -84,12 +84,12 @@ export class OrderModalView{
                                    </div>
                                </div>
                                <label for="card-cardholder" class="card__label">
-                                   <span class="card__text">Владелец</span>
-                                   <input type='text' id="card-cardholder" class='card__input' placeholder="IVAN IVANOV" size="20" required>
+                                   <span class="card__text">Nimi Sukunimi</span>
+                                   <input type='text' id="card-cardholder" class='card__input' placeholder="MIHAIL LEHTI" size="20" required>
                                </label>
                                <div class="card__row">
                                    <label for="card-exp-month" class="card__label">
-                                       <span class="card__text">Действительна до</span>
+                                       <span class="card__text">Voimassa asti</span>
                                        <span class="card__input-columns">
                                            <input type='text' id="card-exp-month" class='card__input' placeholder="00" maxlength="2" size="2" required>
                                            <span>/</span>
@@ -103,7 +103,7 @@ export class OrderModalView{
                                </div>
                            </div>
                        </div>
-                       <input type='submit' class='order-form__button' value='Подтвердить'>
+                       <input type='submit' class='order-form__button' value='Vahvista'>
                    </form>`;
     return template;
   }
@@ -199,14 +199,14 @@ export class OrderModalView{
 
   addErrorPopup() {
     const error = Utils.create<HTMLElement>("error-popup", "div");
-    error.innerHTML = "Пожалуйста, проверьте правильность введенных данных и повторите попытку.";
+    error.innerHTML = " Tarkista syötettyjen tietojen oikeellisuus ja yritä uudelleen.";
     const popup = new PopupWindow();
     popup.buildPopup(error);
   }
 
   addOrderPopup() {
     const order = Utils.create<HTMLElement>("order-popup", "div");
-    order.innerHTML = "Заказ успешно оформлен! Спасибо за покупку!";
+    order.innerHTML = " Tilaus tehty onnistuneesti! Kiitos ostoksestasi!";
     const popup = new PopupWindow();
     popup.buildPopup(order);
   }
@@ -232,7 +232,7 @@ export class OrderModalView{
 
     if (target.value.length) {
       temp = target.value.replace(/[-+\s.( )]/g, '');
-      const chunks = temp.match(/(\d?)(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/)!;
+      const chunks = temp.match(/(\d?)(\d{0,4})(\d{0,3})(\d{0,2})(\d{0,2})/)!;
       if (chunks[3]) {
         target.value = '+' + chunks[1] + ' (' + chunks[2] + ') ' + chunks[3] + (chunks[4] ? '-' + chunks[4] : '') + (chunks[5] ? '-' + chunks[5] : '')
       } else {
@@ -283,7 +283,7 @@ export class OrderModalView{
   }
 
   handleFullNameValidation(e: Event) {
-    const fullNameRegExp = /^[А-Яа-я]{3,} [А-Яа-я]{3,}/;
+    const fullNameRegExp = /^[A-Öa-ö]{3,} [A-Öa-ö]{3,}/;
 
     const target = e.target as HTMLInputElement;
 
@@ -292,7 +292,7 @@ export class OrderModalView{
     if (fullNameRegExp.test(target.value)){
       this.addCorrectMessage(target);
     } else {
-      this.addErrorMessage(target, 'Два слова, каждое не менее 3 букв (русская раскладка)');
+      this.addErrorMessage(target, 'Kaksi sanaa, joissa molemmissa on vähintään 3 kirjainta');
     }
   }
 
@@ -306,12 +306,12 @@ export class OrderModalView{
     if (emailRegExp.test(target.value)){
       this.addCorrectMessage(target);
     } else {
-      this.addErrorMessage(target, 'Попробуйте еще раз');
+      this.addErrorMessage(target, ' Yritä uudelleen');
     }
   }
 
   handlePhoneValidation(e: Event) {
-    const phoneRegExp = /^(\+(\d{0,3})) (\((\d{0,3})\)) (\d{0,3})-(\d{0,2})-(\d{0,2})/gm;
+    const phoneRegExp = /^(\+(\d{0,4})) (\((\d{0,4})\)) (\d{0,3})-(\d{0,2})-(\d{0,3})/gm;
     const target = e.target as HTMLInputElement;
 
     this.removeErrorMessage(target);
@@ -319,12 +319,12 @@ export class OrderModalView{
     if (phoneRegExp.test(target.value)){
       this.addCorrectMessage(target);
     } else {
-      this.addErrorMessage(target, 'Попробуйте еще раз');
+      this.addErrorMessage(target, 'Yritä uudelleen');
     }
   }
 
   handleAddressValidation(e: Event) {
-    const addressRegExp = /^[А-Яа-я.-]{5,} [А-Яа-я]{5,} [А-Яа-я]{5,}/;
+    const addressRegExp = /^[A-Aö-ö.-]{5,} [A-Öa-ö]{5,} [A-Öa-]{5,}/;
     const target = e.target as HTMLInputElement;
 
     this.removeErrorMessage(target);
@@ -332,7 +332,7 @@ export class OrderModalView{
     if (addressRegExp.test(target.value)){
       this.addCorrectMessage(target);
     } else {
-      this.addErrorMessage(target, 'Три слова, каждое не менее 5 букв (русская раскладка)');
+      this.addErrorMessage(target, ' Kolme sanaa, joissa jokaisessa on vähintään 5 kirjainta');
     }
   }
 
@@ -345,7 +345,7 @@ export class OrderModalView{
     if (cardNumberRegExp.test(target.value)){
       this.addCorrectMessage(target);
     } else {
-      this.addErrorMessage(target, '16 цифр');
+      this.addErrorMessage(target, '16 numerot');
     }
   }
 
@@ -358,7 +358,7 @@ export class OrderModalView{
     if (fullNameRegExp.test(target.value)){
       this.addCorrectMessage(target);
     } else {
-      this.addErrorMessage(target, 'Как указано на карте');
+      this.addErrorMessage(target, 'Kuten kartalla näkyy');
     }
   }
 

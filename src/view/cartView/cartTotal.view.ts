@@ -55,7 +55,7 @@ export class CartTotalView {
     return `<div class="cart-total__line">
                 <span class="cart-total__line-text">Määrä</span>
                 <span class="cart-total__line-dashes"></span>
-                <span class="cart-total__line-value">${this.model.cartStockTotal}шт.</span>
+                <span class="cart-total__line-value">${this.model.cartStockTotal}kpl.</span>
             </div>`;
   }
 
