@@ -29,7 +29,7 @@ export class CartView {
 
     this.addListeners();
   }
-
+// commit
   hasProductsOnPage() {
     let has = false;
     const { perPage, currentPage } = this.model.pagination;
